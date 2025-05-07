@@ -26,8 +26,8 @@
     const defaultRepo = "your-org/your-default-repo";
 
     function normalizeRepo(input) {
-      try { return new URL(input).pathname.slice(1).replace(/.git$/,''); }
-      catch { return input.trim().replace(/^/|.git$/g,''); }
+      try { return new URL(input).pathname.slice(1).replace(/\.git$/,''); }
+      catch { return input.trim().replace(/^\/|\.git$/g,''); }
     }
 
     async function initMkDocsInRepo(repo) {
@@ -50,7 +50,6 @@
       CMS.init({
         config: {
           backend: {
-            
             name:   'git-gateway',
             repo:   repo,      // ← tell CMS which repo to use
             branch: 'main'
